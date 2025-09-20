@@ -29,14 +29,12 @@
 	}
 
 	h1 {
-		color: #646cff;
 		margin-bottom: 1rem;
 	}
 
 	p {
 		font-size: 1.2em;
 		margin-bottom: 1rem;
-		color: rgba(255, 255, 255, 0.87);
 	}
 
 	.status {
