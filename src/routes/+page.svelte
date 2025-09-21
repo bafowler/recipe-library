@@ -1,5 +1,6 @@
 <script>
 	import { Button } from '$lib/components/ui/button/index.js';
+	import PlusIcon from '@lucide/svelte/icons/plus';
 
 	let { data } = $props();
 	let recipes = data.recipes;
@@ -10,7 +11,13 @@
 	<meta name="description" content="A simple SvelteKit application" />
 </svelte:head>
 
-<Button class="btn">Click me</Button>
+<div class="flex">
+	<Button variant="outline" size="sm">
+		<PlusIcon />
+		Add Recipe
+	</Button>
+</div>
+
 <ul class="recipe-list flex flex-col gap-12">
 	{#each recipes as recipe}
 		<li class="flex flex-col gap-4">
@@ -27,8 +34,8 @@
 				</ul>
 				<h4>Instructions</h4>
 				<ol class="pl-8">
-					{#each recipe.instructions as instruction}
-						<li>{instruction}</li>
+					{#each recipe.instructions as instruction, index}
+						<li><span>{index + 1}.</span> {instruction}</li>
 					{/each}
 				</ol>
 			</div>

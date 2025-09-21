@@ -2,7 +2,7 @@
 	import '../app.css';
 </script>
 
-<div class="mx-auto max-w-4xl">
+<div class="mx-auto max-w-4xl py-12">
 	<main>
 		<slot />
 	</main>

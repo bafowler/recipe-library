@@ -127,4 +127,7 @@
     h4 {
       @apply text-lg font-semibold;
     }
+    button {
+      @apply cursor-pointer;
+    }
   }
