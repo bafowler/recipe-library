@@ -14,5 +14,6 @@
 		justify-content: center;
 		height: 100vh;
 		padding: 2rem;
+		box-sizing: border-box;
 	}
 </style>
