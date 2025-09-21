@@ -1,4 +1,6 @@
 <script>
+	import { Button } from '$lib/components/ui/button/index.js';
+
 	let { data } = $props();
 	let recipes = data.recipes;
 </script>
@@ -8,6 +10,7 @@
 	<meta name="description" content="A simple SvelteKit application" />
 </svelte:head>
 
+<Button>Click me</Button>
 <ul class="recipe-list">
 	{#each recipes as recipe}
 		<li>
