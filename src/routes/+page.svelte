@@ -11,25 +11,21 @@
 <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
 	{#each recipes as recipe}
 		<li class="border rounded-lg p-4 shadow hover:shadow-lg transition">
-			{#if recipe.image}
-				<img src={recipe.image} alt={recipe.name} class="rounded w-full h-40 object-cover mb-2" />
-			{/if}
 			<h2 class="text-xl font-semibold">{recipe.name}</h2>
-			{#if recipe.author}
-				<p class="text-sm text-gray-600">By {recipe.author}</p>
-			{/if}
-			{#if recipe.tags?.length}
-				<p class="mt-2 text-sm">
-					{#each recipe.tags as tag}
-						<span class="bg-gray-200 rounded px-2 py-1 mr-1">{tag}</span>
-					{/each}
-				</p>
-			{/if}
-			{#if recipe.url}
-				<a href={recipe.url} target="_blank" class="text-blue-600 underline mt-2 block"
-					>View Original</a
-				>
-			{/if}
+			<h4 class="text-sm font-semibold">Ingredients</h4>
+			{#each recipe.ingredients as ingredient}
+				<p>{ingredient}</p>
+			{/each}
+			<h4 class="text-sm font-semibold">Instructions</h4>
+			{#each recipe.instructions as instruction}
+				<p>{instruction}</p>
+			{/each}
 		</li>
 	{/each}
 </ul>
+
+<style>
+	ul {
+		list-style-type: none;
+	}
+</style>
