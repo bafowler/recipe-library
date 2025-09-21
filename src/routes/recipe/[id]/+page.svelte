@@ -1,4 +1,6 @@
 <script>
+	import BackHomeButton from '@/components/BackHomeButton.svelte';
+
 	let { data } = $props();
 	let recipe = data.recipe;
 </script>
@@ -8,9 +10,9 @@
 	<meta name="description" content="Recipe: {recipe.name}" />
 </svelte:head>
 
-<div>
-	<a class="link" href="/">Back to Recipes</a>
+<BackHomeButton />
 
+<div class="flex flex-col items-center">
 	<h2>{recipe.name}</h2>
 
 	<div class="pl-8">

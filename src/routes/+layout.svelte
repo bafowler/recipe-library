@@ -10,9 +10,6 @@
 
 <style>
 	main {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
 		box-sizing: border-box;
 		min-height: 100vh;
 	}
