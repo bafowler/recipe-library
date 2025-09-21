@@ -1,4 +1,4 @@
-import { getRecipes } from '../data/recipes.js';
+import { getRecipes } from '../data/routes/recipes.js';
 
 export async function load() {
 	const recipes = await getRecipes();

@@ -4,32 +4,41 @@
 </script>
 
 <svelte:head>
-	<title>Hello World - Recipes UI</title>
+	<title>Recipe Library</title>
 	<meta name="description" content="A simple SvelteKit application" />
 </svelte:head>
 
-<ul class="recipes grid grid-cols-1 md:grid-cols-2 gap-4">
+<ul class="recipe-list">
 	{#each recipes as recipe}
-		<li class="border rounded-lg p-4 shadow hover:shadow-lg transition">
-			<h2 class="text-xl font-semibold">{recipe.name}</h2>
-			<h4 class="text-sm font-semibold">Ingredients</h4>
+		<li>
+			<div class="recipe-card-header">
+				<h2>{recipe.name}</h2>
+				<a href="/recipe/{recipe.id}">View Recipe</a>
+			</div>
+			<h4>Ingredients</h4>
 			<ul>
 				{#each recipe.ingredients as ingredient}
 					<li>{ingredient}</li>
 				{/each}
 			</ul>
-			<h4 class="text-sm font-semibold">Instructions</h4>
-			<ul>
+			<h4>Instructions</h4>
+			<ol>
 				{#each recipe.instructions as instruction}
 					<li>{instruction}</li>
 				{/each}
-			</ul>
+			</ol>
 		</li>
 	{/each}
 </ul>
 
 <style>
-	.recipes {
+	.recipe-card-header {
+		display: flex;
+		gap: 16px;
+		align-items: center;
+	}
+
+	.recipe-list {
 		list-style-type: none;
 		height: 100%;
 		overflow-y: auto;
