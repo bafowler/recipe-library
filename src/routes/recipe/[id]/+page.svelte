@@ -9,35 +9,22 @@
 </svelte:head>
 
 <div>
-	<div>
-		<a href="/">Back to Recipes</a>
-	</div>
+	<a class="link" href="/">Back to Recipes</a>
 
-	<div>
-		<h1>{recipe.name}</h1>
+	<h2>{recipe.name}</h2>
 
-		<div>
-			<div>
-				<h2>Ingredients</h2>
-				<ul>
-					{#each recipe.ingredients as ingredient}
-						<li>
-							{ingredient}
-						</li>
-					{/each}
-				</ul>
-			</div>
-
-			<div>
-				<h2>Instructions</h2>
-				<ol>
-					{#each recipe.instructions as instruction}
-						<li>
-							{instruction}
-						</li>
-					{/each}
-				</ol>
-			</div>
-		</div>
+	<div class="pl-8">
+		<h4>Ingredients</h4>
+		<ul class="pl-8">
+			{#each recipe.ingredients as ingredient}
+				<li>{ingredient}</li>
+			{/each}
+		</ul>
+		<h4>Instructions</h4>
+		<ol class="pl-8">
+			{#each recipe.instructions as instruction}
+				<li>{instruction}</li>
+			{/each}
+		</ol>
 	</div>
 </div>

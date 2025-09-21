@@ -11,38 +11,33 @@
 </svelte:head>
 
 <Button class="btn">Click me</Button>
-<ul class="recipe-list">
+<ul class="recipe-list flex flex-col gap-12">
 	{#each recipes as recipe}
-		<li>
-			<div class="recipe-card-header">
+		<li class="flex flex-col gap-4">
+			<div class="flex items-center gap-4">
 				<h2>{recipe.name}</h2>
-				<a href="/recipe/{recipe.id}">View Recipe</a>
+				<a class="link" href="/recipe/{recipe.id}">View Recipe</a>
 			</div>
-			<h4>Ingredients</h4>
-			<ul>
-				{#each recipe.ingredients as ingredient}
-					<li>{ingredient}</li>
-				{/each}
-			</ul>
-			<h4>Instructions</h4>
-			<ol>
-				{#each recipe.instructions as instruction}
-					<li>{instruction}</li>
-				{/each}
-			</ol>
+			<div class="pl-8">
+				<h4>Ingredients</h4>
+				<ul class="pl-8">
+					{#each recipe.ingredients as ingredient}
+						<li>{ingredient}</li>
+					{/each}
+				</ul>
+				<h4>Instructions</h4>
+				<ol class="pl-8">
+					{#each recipe.instructions as instruction}
+						<li>{instruction}</li>
+					{/each}
+				</ol>
+			</div>
 		</li>
 	{/each}
 </ul>
 
 <style>
-	.recipe-card-header {
-		display: flex;
-		gap: 16px;
-		align-items: center;
-	}
-
 	.recipe-list {
-		list-style-type: none;
 		height: 100%;
 		overflow-y: auto;
 	}
