@@ -15,10 +15,12 @@
 		"mongodb": "^6.20.0"
 	},
 	"devDependencies": {
+		"@internationalized/date": "^3.9.0",
 		"@lucide/svelte": "^0.544.0",
 		"@sveltejs/adapter-auto": "^6.1.0",
 		"@sveltejs/kit": "^2.42.2",
 		"@tailwindcss/vite": "^4.0.0",
+		"bits-ui": "^2.11.0",
 		"clsx": "^2.1.1",
 		"daisyui": "^5.1.13",
 		"eslint": "^9.36.0",

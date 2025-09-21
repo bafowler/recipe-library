@@ -1,9 +1,14 @@
 <script>
+	import { goto } from '$app/navigation';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import PlusIcon from '@lucide/svelte/icons/plus';
 
 	let { data } = $props();
 	let recipes = data.recipes;
+
+	function handleAddRecipe() {
+		goto('/add/from-url');
+	}
 </script>
 
 <svelte:head>
@@ -12,7 +17,7 @@
 </svelte:head>
 
 <div class="flex">
-	<Button variant="outline" size="sm">
+	<Button variant="outline" size="sm" onclick={handleAddRecipe}>
 		<PlusIcon />
 		Add Recipe
 	</Button>

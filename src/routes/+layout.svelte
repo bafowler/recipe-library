@@ -13,7 +13,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
 		box-sizing: border-box;
+		min-height: 100vh;
 	}
 </style>
