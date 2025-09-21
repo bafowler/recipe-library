@@ -1,11 +1,6 @@
 <script>
-	import { onMount } from 'svelte';
-
-	let mounted = false;
-
-	onMount(() => {
-		mounted = true;
-	});
+	let { data } = $props();
+	let recipes = data.recipes;
 </script>
 
 <svelte:head>
@@ -13,32 +8,28 @@
 	<meta name="description" content="A simple SvelteKit application" />
 </svelte:head>
 
-<div class="container">
-	<h1>Hello World!</h1>
-	<p>Welcome to your SvelteKit application running on port 3000.</p>
-	{#if mounted}
-		<p class="status">✅ Application is running successfully!</p>
-	{/if}
-</div>
-
-<style>
-	.container {
-		text-align: center;
-		max-width: 600px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		margin-bottom: 1rem;
-	}
-
-	p {
-		font-size: 1.2em;
-		margin-bottom: 1rem;
-	}
-
-	.status {
-		color: #4ade80;
-		font-weight: 500;
-	}
-</style>
+<ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+	{#each recipes as recipe}
+		<li class="border rounded-lg p-4 shadow hover:shadow-lg transition">
+			{#if recipe.image}
+				<img src={recipe.image} alt={recipe.name} class="rounded w-full h-40 object-cover mb-2" />
+			{/if}
+			<h2 class="text-xl font-semibold">{recipe.name}</h2>
+			{#if recipe.author}
+				<p class="text-sm text-gray-600">By {recipe.author}</p>
+			{/if}
+			{#if recipe.tags?.length}
+				<p class="mt-2 text-sm">
+					{#each recipe.tags as tag}
+						<span class="bg-gray-200 rounded px-2 py-1 mr-1">{tag}</span>
+					{/each}
+				</p>
+			{/if}
+			{#if recipe.url}
+				<a href={recipe.url} target="_blank" class="text-blue-600 underline mt-2 block"
+					>View Original</a
+				>
+			{/if}
+		</li>
+	{/each}
+</ul>
