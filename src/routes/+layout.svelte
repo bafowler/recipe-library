@@ -2,9 +2,11 @@
 	import '../app.css';
 </script>
 
-<main>
-	<slot />
-</main>
+<div class="mx-auto max-w-4xl">
+	<main>
+		<slot />
+	</main>
+</div>
 
 <style>
 	main {
@@ -12,8 +14,6 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		height: 100vh;
-		padding: 2rem;
 		box-sizing: border-box;
 	}
 </style>

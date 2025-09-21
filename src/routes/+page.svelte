@@ -14,7 +14,7 @@
 <ul class="recipe-list flex flex-col gap-12">
 	{#each recipes as recipe}
 		<li class="flex flex-col gap-4">
-			<div class="flex items-center gap-4">
+			<div>
 				<h2>{recipe.name}</h2>
 				<a class="link" href="/recipe/{recipe.id}">View Recipe</a>
 			</div>
@@ -35,10 +35,3 @@
 		</li>
 	{/each}
 </ul>
-
-<style>
-	.recipe-list {
-		height: 100%;
-		overflow-y: auto;
-	}
-</style>
