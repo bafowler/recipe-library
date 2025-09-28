@@ -6,8 +6,18 @@
 
 	let url = $state('');
 
-	function handleGo() {
-		console.log(url);
+	async function handleGo(e: any) {
+		const response = await fetch('/add/from-url', {
+			method: 'POST',
+			body: JSON.stringify({ url }),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+
+		const { recipe } = await response.json();
+
+		console.log(recipe);
 	}
 </script>
 
