@@ -7,7 +7,7 @@
 	let recipes = data.recipes;
 
 	function handleAddRecipe() {
-		goto('/add/from-url');
+		goto('/from-url');
 	}
 </script>
 
