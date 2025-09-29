@@ -4,7 +4,7 @@
 	import PlusIcon from '@lucide/svelte/icons/plus';
 
 	let { data } = $props();
-	let recipes = data.recipes;
+	let recipes = data.recipes.sort((a, b) => a.name.localeCompare(b.name));
 
 	function handleAddRecipe() {
 		goto('/from-url');
