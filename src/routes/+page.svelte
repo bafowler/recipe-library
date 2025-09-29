@@ -16,7 +16,7 @@
 	<meta name="description" content="A simple SvelteKit application" />
 </svelte:head>
 
-<div class="flex flex-col items-center">
+<div class="flex flex-col items-center gap-8">
 	<Button variant="outline" size="sm" onclick={handleAddRecipe}>
 		<PlusIcon />
 		Add Recipe

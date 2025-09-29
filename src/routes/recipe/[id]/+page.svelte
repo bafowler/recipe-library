@@ -11,5 +11,7 @@
 	<meta name="description" content="Recipe: {recipe.name}" />
 </svelte:head>
 
-<BackHomeButton />
-<RecipeDetails {recipe} />
+<div class="flex flex-col gap-8">
+	<BackHomeButton />
+	<RecipeDetails {recipe} />
+</div>
