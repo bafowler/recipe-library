@@ -6,6 +6,7 @@
 	import BackHomeButton from '@/components/BackHomeButton.svelte';
 	import type { Recipe } from '../../models.js';
 	import RecipeDetails from '@/components/RecipeDetails.svelte';
+	import { goto } from '$app/navigation';
 
 	let generateLoading = $state(false);
 	let createLoading = $state(false);
@@ -31,7 +32,7 @@
 	async function handleAddRecipe() {
 		createLoading = true;
 
-		const response = await fetch('/create', {
+		await fetch('/create', {
 			method: 'POST',
 			body: JSON.stringify({ recipe }),
 			headers: {
@@ -39,9 +40,9 @@
 			}
 		});
 
-		console.log(await response.json());
-
 		createLoading = false;
+
+		goto('/');
 	}
 </script>
 
