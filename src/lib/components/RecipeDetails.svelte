@@ -14,8 +14,8 @@
 		</ul>
 		<h4>Instructions</h4>
 		<ol class="pl-8">
-			{#each recipe.instructions as instruction}
-				<li>{instruction}</li>
+			{#each recipe.instructions as instruction, index}
+				<li><span class="font-semibold">{index + 1}.</span> {instruction}</li>
 			{/each}
 		</ol>
 	</div>
