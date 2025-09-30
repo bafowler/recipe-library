@@ -7,6 +7,7 @@
 	import type { Recipe } from '../../models.js';
 	import RecipeDetails from '@/components/RecipeDetails.svelte';
 	import { goto } from '$app/navigation';
+	import CentrePane from '@/components/CentrePane.svelte';
 
 	let generateLoading = $state(false);
 	let createLoading = $state(false);
@@ -48,7 +49,7 @@
 
 <BackHomeButton />
 
-<div class="flex flex-col items-center">
+<CentrePane>
 	<div class="flex w-full flex-col items-center gap-8">
 		<div class="flex w-full max-w-sm flex-col gap-1.5">
 			<Label for="url" class="semi-bold">Recipe URL</Label>
@@ -75,4 +76,4 @@
 			</Button>
 		{/if}
 	</div>
-</div>
+</CentrePane>

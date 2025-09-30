@@ -1,5 +1,6 @@
 <script>
 	import BackHomeButton from '@/components/BackHomeButton.svelte';
+	import CentrePane from '@/components/CentrePane.svelte';
 	import RecipeDetails from '@/components/RecipeDetails.svelte';
 
 	let { data } = $props();
@@ -11,7 +12,7 @@
 	<meta name="description" content="Recipe: {recipe.name}" />
 </svelte:head>
 
-<div class="flex flex-col gap-8">
-	<BackHomeButton />
+<BackHomeButton />
+<CentrePane>
 	<RecipeDetails {recipe} />
-</div>
+</CentrePane>

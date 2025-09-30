@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import PlusIcon from '@lucide/svelte/icons/plus';
+	import CentrePane from '$lib/components/CentrePane.svelte';
 
 	let { data } = $props();
 	let recipes = data.recipes.sort((a, b) => a.name.localeCompare(b.name));
@@ -16,7 +17,7 @@
 	<meta name="description" content="A simple SvelteKit application" />
 </svelte:head>
 
-<div class="flex flex-col items-center gap-8">
+<CentrePane>
 	<Button variant="outline" size="sm" onclick={handleAddRecipe}>
 		<PlusIcon />
 		Add Recipe
@@ -32,4 +33,4 @@
 			</li>
 		{/each}
 	</ul>
-</div>
+</CentrePane>
