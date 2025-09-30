@@ -14,7 +14,7 @@
 	let url = $state('');
 	let recipe = $state<Recipe | null>(null);
 
-	async function handleGo(e: any) {
+	async function handleGo(e: MouseEvent) {
 		generateLoading = true;
 
 		const response = await fetch('/from-url/generate', {
