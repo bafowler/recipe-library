@@ -2,12 +2,16 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 	import * as Field from '$lib/components/ui/field/index.js';
 	import Input from './ui/input/input.svelte';
-
+	import TrashIcon from '@lucide/svelte/icons/trash';
 	let { recipe } = $props();
 	let ingredients = $state(recipe.ingredients);
 
 	function handleAddIngredient() {
 		ingredients.push('');
+	}
+
+	function handleRemoveIngredient(ingredient: string) {
+		ingredients = ingredients.filter((i: string) => i !== ingredient);
 	}
 </script>
 
@@ -20,8 +24,16 @@
 			<div class="flex flex-col gap-4">
 				<ul class="flex flex-col gap-4 pl-8">
 					{#each ingredients as ingredient}
-						<Field.Field>
+						<Field.Field orientation="horizontal">
 							<Input id={ingredient} value={ingredient} />
+							<Button
+								variant="secondary"
+								size="icon"
+								class="size-8"
+								onclick={() => handleRemoveIngredient(ingredient)}
+							>
+								<TrashIcon />
+							</Button>
 						</Field.Field>
 					{/each}
 				</ul>
