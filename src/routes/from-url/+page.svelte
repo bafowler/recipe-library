@@ -5,9 +5,9 @@
 	import Loader2Icon from '@lucide/svelte/icons/loader-2';
 	import BackHomeButton from '@/components/BackHomeButton.svelte';
 	import type { Recipe } from '../../models.js';
-	import RecipeDetails from '@/components/RecipeDetails.svelte';
 	import { goto } from '$app/navigation';
 	import CentrePane from '@/components/CentrePane.svelte';
+	import EditRecipe from '@/components/EditRecipe.svelte';
 
 	let generateLoading = $state(false);
 	let createLoading = $state(false);
@@ -67,8 +67,8 @@
 		</div>
 
 		{#if recipe}
-			<RecipeDetails {recipe} />
-			<Button variant="outline" onclick={handleAddRecipe} disabled={createLoading}>
+			<EditRecipe {recipe} />
+			<Button onclick={handleAddRecipe} disabled={createLoading}>
 				{#if createLoading}
 					<Loader2Icon class="animate-spin" />
 				{/if}
