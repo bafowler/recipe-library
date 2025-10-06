@@ -4,6 +4,11 @@
 	import Input from './ui/input/input.svelte';
 
 	let { recipe } = $props();
+	let ingredients = $state(recipe.ingredients);
+
+	function handleAddIngredient() {
+		ingredients.push('');
+	}
 </script>
 
 <div class="flex flex-col items-center">
@@ -14,14 +19,14 @@
 			<h4 class="mb-2">Ingredients</h4>
 			<div class="flex flex-col gap-4">
 				<ul class="flex flex-col gap-4 pl-8">
-					{#each recipe.ingredients as ingredient}
+					{#each ingredients as ingredient}
 						<Field.Field>
 							<Input id={ingredient} value={ingredient} />
 						</Field.Field>
 					{/each}
 				</ul>
 				<div class="pl-8">
-					<Button variant="outline">Add Ingredient</Button>
+					<Button variant="outline" onclick={handleAddIngredient}>Add Ingredient</Button>
 				</div>
 			</div>
 		</div>
