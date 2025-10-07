@@ -3,9 +3,13 @@
 	import * as Field from '$lib/components/ui/field/index.js';
 	import Input from './ui/input/input.svelte';
 	import TrashIcon from '@lucide/svelte/icons/trash';
+	import { goto } from '$app/navigation';
+	import Loader2Icon from '@lucide/svelte/icons/loader-2';
+
 	let { recipe } = $props();
 	let ingredients = $state(recipe.ingredients);
 	let instructions = $state(recipe.instructions);
+	let createLoading = $state(false);
 
 	function handleAddIngredient() {
 		ingredients.push('');
@@ -21,6 +25,22 @@
 
 	function handleRemoveInstruction(index: number) {
 		instructions = instructions.filter((_: string, i: number) => i !== index);
+	}
+
+	async function handleAddRecipe() {
+		createLoading = true;
+
+		await fetch('/create', {
+			method: 'POST',
+			body: JSON.stringify({ recipe: { ...recipe, ingredients, instructions } }),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+
+		createLoading = false;
+
+		goto('/');
 	}
 </script>
 
@@ -78,3 +98,10 @@
 		</div>
 	</div>
 </div>
+
+<Button onclick={handleAddRecipe} disabled={createLoading}>
+	{#if createLoading}
+		<Loader2Icon class="animate-spin" />
+	{/if}
+	Add Recipe
+</Button>

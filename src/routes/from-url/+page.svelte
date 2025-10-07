@@ -5,12 +5,10 @@
 	import Loader2Icon from '@lucide/svelte/icons/loader-2';
 	import BackHomeButton from '@/components/BackHomeButton.svelte';
 	import type { Recipe } from '../../models.js';
-	import { goto } from '$app/navigation';
 	import CentrePane from '@/components/CentrePane.svelte';
 	import EditRecipe from '@/components/EditRecipe.svelte';
 
 	let generateLoading = $state(false);
-	let createLoading = $state(false);
 	let url = $state('');
 	let recipe = $state<Recipe | null>(null);
 
@@ -29,22 +27,6 @@
 
 		generateLoading = false;
 	}
-
-	async function handleAddRecipe() {
-		createLoading = true;
-
-		await fetch('/create', {
-			method: 'POST',
-			body: JSON.stringify({ recipe }),
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		});
-
-		createLoading = false;
-
-		goto('/');
-	}
 </script>
 
 <BackHomeButton />
@@ -54,11 +36,7 @@
 		<div class="flex w-full max-w-sm flex-col gap-1.5">
 			<Label for="url" class="semi-bold">Recipe URL</Label>
 			<Input type="url" id="url" placeholder="https://" bind:value={url} />
-			<Button
-				variant="outline"
-				disabled={!url || generateLoading || createLoading}
-				onclick={handleGo}
-			>
+			<Button variant="outline" disabled={!url || generateLoading} onclick={handleGo}>
 				{#if generateLoading}
 					<Loader2Icon class="animate-spin" />
 				{/if}
@@ -68,12 +46,6 @@
 
 		{#if recipe}
 			<EditRecipe {recipe} />
-			<Button onclick={handleAddRecipe} disabled={createLoading}>
-				{#if createLoading}
-					<Loader2Icon class="animate-spin" />
-				{/if}
-				Add Recipe
-			</Button>
 		{/if}
 	</div>
 </CentrePane>
