@@ -34,9 +34,9 @@
 			<h4 class="mb-2">Ingredients</h4>
 			<div class="flex flex-col gap-4">
 				<ul class="flex flex-col gap-4 pl-8">
-					{#each ingredients as ingredient}
+					{#each ingredients as ingredient, index}
 						<Field.Field orientation="horizontal">
-							<Input id={ingredient} value={ingredient} class="flex-grow-1" />
+							<Input id={ingredient} bind:value={ingredients[index]} class="flex-grow-1" />
 							<Button
 								variant="secondary"
 								size="icon"
@@ -61,7 +61,7 @@
 					{#each instructions as instruction, index}
 						<Field.Field orientation="horizontal">
 							<span class="font-semibold">{index + 1}.</span>
-							<Input id={instruction} value={instruction} />
+							<Input id={instruction} bind:value={instructions[index]} />
 							<Button
 								variant="secondary"
 								size="icon"
